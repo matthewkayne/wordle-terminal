@@ -50,29 +50,29 @@ for i in range(5):
 
     guessChar = list(guess)
 
-    for character in range(len(word)):
+    for character, _ in enumerate(word):
         if guessChar[character] == word[character]:
             greens[character] = word[character]
-    for character in range(len(word)):
+    for character, _ in enumerate(word):
         if (guessChar[character] in word) and (guessChar[character] not in greens) and (guessChar[character] not in yellows):
             yellows[character] = guessChar[character]
-    for character in range(len(word)):
+    for character, _ in enumerate(word):
         if greens[character] is None and yellows[character] is None:
             greys[character] = guessChar[character]
 
     output = [None, None, None, None, None]
 
-    for item in range(len(greens)):
+    for item, _ in enumerate(greens):
         if greens[item] is not None:
             output[item] = partial(green, greens[item])
-    for item in range(len(yellows)):
+    for item, _ in enumerate(yellows):
         if yellows[item] is not None:
             output[item] = partial(yellow, yellows[item])
-    for item in range(len(greys)):
+    for item, _ in enumerate(greys):
         if greys[item] is not None:
             output[item] = partial(grey, greys[item])
 
-    for out in range(len(output)):
+    for out, _ in enumerate(output):
         print(output[out](), end="")
 
     if None in greens:
