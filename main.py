@@ -3,17 +3,18 @@ from functools import partial
 from termcolor import colored
 
 
-def ordinal(n):
+def ordinal(var):
     """Ordinal"""
-    return "%d%s" % (n, "tsnrhtdd"[(n//10 % 10 != 1)*(n % 10 < 4)*n % 10::4])
+    return "%d%s" % (var, "tsnrhtdd"[(var//10 % 10 != 1)*(var % 10 < 4)*var % 10::4])
 
 
-file = open("words.txt", "r")
-wordList2D = [(line.strip()).split() for line in file]
+with open("words.txt", "r") as file:
+    wordList2D = [(line.strip()).split() for line in file]
+
 file.close()
 wordList = []
 
-for i in range(len(wordList2D)):
+for i, _ in enumerate(wordList2D):
     wordList.append(wordList2D[i][0])
 
 word = list(wordList[random.randint(0, len(wordList)-1)])
