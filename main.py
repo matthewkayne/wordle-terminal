@@ -1,3 +1,4 @@
+"""Wordle Terminal"""
 import random
 from functools import partial
 from termcolor import colored
@@ -5,7 +6,7 @@ from termcolor import colored
 
 def ordinal(var):
     """Ordinal"""
-    return "%d%s" % (var, "tsnrhtdd"[(var//10 % 10 != 1)*(var % 10 < 4)*var % 10::4])
+    return f"""{"%d%s"  %(var, "tsnrhtdd"[(var//10 % 10 != 1)*(var % 10 < 4)*var % 10::4])}"""
 
 
 with open("words.txt", "r") as file:
