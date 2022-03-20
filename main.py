@@ -1,10 +1,11 @@
 import random
-from termcolor import colored
 from functools import partial
+from termcolor import colored
 
 
-def ordinal(n): return "%d%s" % (
-    n, "tsnrhtdd"[(n//10 % 10 != 1)*(n % 10 < 4)*n % 10::4])
+def ordinal(n):
+    """Ordinal"""
+    return "%d%s" % (n, "tsnrhtdd"[(n//10 % 10 != 1)*(n % 10 < 4)*n % 10::4])
 
 
 file = open("words.txt", "r")
@@ -19,14 +20,17 @@ word = list(wordList[random.randint(0, len(wordList)-1)])
 
 
 def green(text):
+    """Green"""
     return colored(text, "green", attrs=['reverse', 'blink'])
 
 
 def yellow(text):
+    """Yellow"""
     return colored(text, "yellow", attrs=['reverse', 'blink'])
 
 
 def grey(text):
+    """Grey"""
     return colored(text, "white", attrs=['reverse', 'blink'])
 
 
@@ -53,19 +57,19 @@ for i in range(5):
         if (guessChar[character] in word) and (guessChar[character] not in greens) and (guessChar[character] not in yellows):
             yellows[character] = guessChar[character]
     for character in range(len(word)):
-        if greens[character] == None and yellows[character] == None:
+        if greens[character] is None and yellows[character] is None:
             greys[character] = guessChar[character]
 
     output = [None, None, None, None, None]
 
     for item in range(len(greens)):
-        if greens[item] != None:
+        if greens[item] is not None:
             output[item] = partial(green, greens[item])
     for item in range(len(yellows)):
-        if yellows[item] != None:
+        if yellows[item] is not None:
             output[item] = partial(yellow, yellows[item])
     for item in range(len(greys)):
-        if greys[item] != None:
+        if greys[item] is not None:
             output[item] = partial(grey, greys[item])
 
     for out in range(len(output)):
