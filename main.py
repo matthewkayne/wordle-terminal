@@ -6,10 +6,10 @@ from termcolor import colored
 
 def ordinal(var):
     """Ordinal"""
-    return f"""{"%d%s"  %(var, "tsnrhtdd"[(var//10 % 10 != 1)*(var % 10 < 4)*var % 10::4])}"""
+    return f"""{"%d%s"  % (var, "tsnrhtdd"[(var//10 % 10 != 1)*(var % 10 < 4)*var % 10::4])}"""
 
 
-with open("words.txt", "r") as file:
+with open("words.txt", "r", encoding="utf8") as file:
     wordList2D = [(line.strip()).split() for line in file]
 
 file.close()
